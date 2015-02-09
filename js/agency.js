@@ -24,3 +24,24 @@ $('body').scrollspy({
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
+
+
+// Sharing icon animation
+$('.profile-pic .fa').mouseover(function(){
+    $(this).addClass("animated tada");
+});
+
+$('.profile-pic .fa').mouseout(function(){
+    $(this).removeClass("animated tada");
+});
+
+// Initial transitions
+$( document ).ready(function(){
+    $('.profile-pic img').addClass("animated slideInDown");
+    $('.profile-pic .fa').addClass("animated zoomInDown");
+    var delay = 1000;
+    setTimeout(function() {
+        $('.profile-pic img').removeClass("animated slideInDown");
+        $('.profile-pic .fa').removeClass("animated zoomInDown");
+    }, delay);
+});

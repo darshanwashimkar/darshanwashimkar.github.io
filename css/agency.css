@@ -634,7 +634,8 @@ section h3.section-subheading {
 
 .team-member img {
     margin: 0 auto;
-    border: 7px solid #fff;
+    border: 3px solid #fff;
+    padding: 4px;
 }
 
 .team-member h4 {
@@ -868,4 +869,23 @@ body {
 
 .profile-pic{
     text-align: center;
+}
+
+.profile-pic ul{
+    padding-top: 20px;
+}
+
+.profile-pic img:hover{
+    transition: all 150ms linear;
+    border-color: #fed136;       
+    cursor: pointer;
+}
+
+.list-inline li{
+    opacity: 0.5;    
+}
+
+.list-inline li:hover{
+    transition: all 150ms linear;
+    opacity: 1;        
 }
