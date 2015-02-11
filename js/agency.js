@@ -35,8 +35,13 @@ $('.profile-pic .fa').mouseout(function(){
     $(this).removeClass("animated tada");
 });
 
-// Initial transitions
+
 $( document ).ready(function(){
+    background_pool = ["./img/header-bg.jpg","./img/header-bg4.jpg"];
+    var background_img = background_pool[Math.floor(Math.random() * background_pool.length)];
+    $('header').css("background-image", "url("+background_img+")");  
+
+    // Initial transitions    
     $('.profile-pic img').addClass("animated slideInDown");
     $('.profile-pic .fa').addClass("animated zoomInDown");
     var delay = 1000;
