@@ -633,7 +633,7 @@ section h3.section-subheading {
 }
 
 .team-member img {
-    margin: 0 auto;
+    margin: 0 auto 25px auto;
     border: 3px solid #fff;
     padding: 4px;
 }
@@ -877,8 +877,7 @@ body {
 
 .profile-pic img:hover{
     transition: all 150ms linear;
-    border-color: #fed136;       
-    cursor: pointer;
+    border-color: #fed136;           
 }
 
 .list-inline li{
@@ -888,4 +887,8 @@ body {
 .list-inline li:hover{
     transition: all 150ms linear;
     opacity: 1;        
+}
+
+#status-quo a{
+    color: #cc742c;
 }

@@ -42,11 +42,11 @@ $( document ).ready(function(){
     $('header').css("background-image", "url("+background_img+")");  
 
     // Initial transitions    
-    $('.profile-pic img').addClass("animated slideInDown");
-    $('.profile-pic .fa').addClass("animated zoomInDown");
+    $('.profile-pic img').addClass("animated fadeInDown");
+    $('.profile-pic ul i').addClass("animated zoomInDown");
     var delay = 1000;
     setTimeout(function() {
-        $('.profile-pic img').removeClass("animated slideInDown");
-        $('.profile-pic .fa').removeClass("animated zoomInDown");
+        $('.profile-pic img').removeClass("animated fadeInDown");
+        $('.profile-pic ul i').removeClass("animated zoomInDown");
     }, delay);
 });
