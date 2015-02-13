@@ -35,6 +35,9 @@ $('.profile-pic .fa').mouseout(function(){
     $(this).removeClass("animated tada");
 });
 
+// To detect visibility
+;(function(e){e.fn.visible=function(t,n,r){var i=e(this).eq(0),s=i.get(0),o=e(window),u=o.scrollTop(),a=u+o.height(),f=o.scrollLeft(),l=f+o.width(),c=i.offset().top,h=c+i.height(),p=i.offset().left,d=p+i.width(),v=t===true?h:c,m=t===true?c:h,g=t===true?d:p,y=t===true?p:d,b=n===true?s.offsetWidth*s.offsetHeight:true,r=r?r:"both";if(r==="both")return!!b&&m<=a&&v>=u&&y<=l&&g>=f;else if(r==="vertical")return!!b&&m<=a&&v>=u;else if(r==="horizontal")return!!b&&y<=l&&g>=f}})(jQuery);
+
 
 $( document ).ready(function(){
     background_pool = ["./img/header-bg.jpg","./img/header-bg4.jpg"];
@@ -48,5 +51,25 @@ $( document ).ready(function(){
     setTimeout(function() {
         $('.profile-pic img').removeClass("animated fadeInDown");
         $('.profile-pic ul i').removeClass("animated zoomInDown");
-    }, delay);
+    }, delay);    
+           
+    $('.timeline .timeline-image').waypoint(function(){
+        $(this).toggleClass('active');
+        $(this).toggleClass('animated bounceIn');
+    },{offset:'90%'});
+
+    $('.timeline li:not(.timeline-inverted) .timeline-panel').waypoint(function(){
+        $(this).toggleClass('active');
+        $(this).toggleClass('animated bounceInLeft');
+    },{offset:'90%'});
+
+    $('.timeline-inverted .timeline-panel').waypoint(function(){
+        $(this).toggleClass('active');
+        $(this).toggleClass('animated bounceInRight');
+    },{offset:'90%'});
 });
+
+
+
+    
+
