@@ -59,14 +59,14 @@ $( document ).ready(function(){
     },{offset:'90%'});
 
     $('.timeline li:not(.timeline-inverted) .timeline-panel').waypoint(function(){
-        $(this).toggleClass('active');
+        
         $(this).toggleClass('animated bounceInLeft');
     },{offset:'90%'});
 
-    $('.timeline-inverted .timeline-panel').waypoint(function(){
-        $(this).toggleClass('active');
+    $('.timeline-inverted .timeline-panel').waypoint(function(){        
         $(this).toggleClass('animated bounceInRight');
     },{offset:'90%'});
+    
 });
 
 
