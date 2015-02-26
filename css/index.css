@@ -220,7 +220,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
-    color: #fff;
+    color: #000;
     background-color: #fed136;
 }
 
@@ -331,10 +331,10 @@ section h2.section-heading {
 }
 
 section h3.section-subheading {
-    margin-bottom: 75px;
+    margin-bottom: 100px;
     text-transform: none;
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
+    font-size: 25px;
     font-style: italic;
     font-weight: 400;
 }
@@ -345,7 +345,7 @@ section h3.section-subheading {
     }
 }
 
-.service-heading {
+.project-heading {
     margin: 15px 0;
     text-transform: none;
 }
@@ -652,68 +652,47 @@ aside.clients img {
     margin: 50px auto;
 }
 
-section#contact {
+section#resume {
     background-color: #222;
     background-image: url(../img/map-image.png);
     background-position: center;
     background-repeat: no-repeat;
 }
 
-section#contact .section-heading {
+section#resume .section-heading {
     color: #fff;
 }
 
-section#contact .form-group {
-    margin-bottom: 25px;
-}
 
-section#contact .form-group input,
-section#contact .form-group textarea {
-    padding: 20px;
-}
-
-section#contact .form-group input.form-control {
-    height: auto;
-}
-
-section#contact .form-group textarea.form-control {
-    height: 236px;
-}
-
-section#contact .form-control:focus {
-    border-color: #fed136;
-    box-shadow: none;
-}
-
-section#contact::-webkit-input-placeholder {
+section#resume::-webkit-input-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#contact:-moz-placeholder {
+section#resume:-moz-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#contact::-moz-placeholder {
+section#resume::-moz-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#contact:-ms-input-placeholder {
+section#resume:-ms-input-placeholder {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color: #bbb;
 }
 
-section#contact .text-danger {
+section#resume .text-danger {
     color: #e74c3c;
 }
 
@@ -901,3 +880,24 @@ body {
     transition: all 4s ease-in-out;
     background-color: #dd2727;
 }
+
+#projects a{
+  color: #cc742c;
+}
+
+
+#projects .project-heading a{
+    color: #000000;
+}
+
+.justify{
+    text-align: justify;
+}
+
+.project {
+    padding: 25px;
+}
+.project img{
+    padding-top: 15px;
+}
+
