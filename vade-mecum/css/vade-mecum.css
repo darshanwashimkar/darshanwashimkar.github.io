@@ -152,3 +152,24 @@
 .sidebar-nav .sidebar-brand a{
     padding-right: 15px;
 }
+
+#header-jumbotron{
+    background-color: #488cc4;
+    border: solid 1px #0d5b9b;
+    color: #FFFFFF;
+}
+
+#interesting-q .post{
+    border: solid 1px #0d5b9b;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 25px 0 25px 0;
+}
+
+#interesting-q .post date{
+    color: #0d5b9b;
+}
+
+#page-content-wrapper a{
+    color: #cc742c;
+}
