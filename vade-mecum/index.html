@@ -41,6 +41,7 @@
                 </li>
                 <li>
                     <a href="#">Vade Mecum</a>
+                    <a href="#interesting-q"> Interesting Q &amp A</a>
                 </li>                
             </ul>
         </div>
@@ -58,9 +59,17 @@
                         <div id="interesting-q">
                             <h3>Interesting Questions</h3>
                             <div class = "post">
-                                <date>25-Feb-2015</date>
-                                <p>Yesterday, my friend <a href="http://www.linkedin.com/in/manojpanguluri/en" target="_blank">Manoj</a> </p>
-                                <input type="text" name="find-palindrome-culprit" id="find-palindrome-culprit" value="madam">                                            
+                                <date class="pull-right">25-Feb-2015</date>
+                                <h4>Find what makes string not a palindrome?</h4>                                
+                                <p>Yesterday, my friend <a href="http://www.linkedin.com/in/manojpanguluri/en" target="_blank">Manoj</a> asked me this interesting question. The problem statement is as follows, <br>
+                                    If I give you a string, say S = "madam" which is palindrome. But now, I have added few extra charater to S [You don't know how many charaters] and now S = "mPadam". I have added 'P' in this case. You have to come up with a linear time algorith i.e. O(n) and find out if I have added 1 charater or more to the original palindrome string S.
+                                    <ul>
+                                        <li>If I have added 1 extra charater then print that extra charater</li>
+                                        <li>If I have added more than one extra charater then exit the program</li>
+                                    </ul>                                    
+                                    Following is my solution.
+                                </p>
+                                <input type="text" name="find-palindrome-culprit" id="find-palindrome-culprit" placeholder="Enter the string">                                            
                                 <button type="button" onclick="findPalindromeCulprit();">Give Me Answer!</button>
                             </div>                                             
                         </div>
@@ -88,29 +97,31 @@
 
     function findPalindromeCulprit(){
         S = document.getElementById("find-palindrome-culprit").value;
-        rear = S.length - 1;
-        culprit = "";
+        if(S != ""){
+            rear = S.length - 1;
+            culprit = "";
 
-        for(front = 0; front<rear;){
-            if (S[front] == S[rear]) {front++; rear--;}
-            else{                                
-                update = "";
-                if(front == (rear-1) && culprit.length == 0){alert("Extra charater is: "+S[front]); return; }
-                if((S[front] == S[rear-1])){culprit += S[rear]; update += "a"}                
-                else if((S[front+1] == S[rear])){culprit += S[front]; update += "b" }
-                else { alert("String has two or more extra charaters"); return;}                
-                if((culprit.length > 1)){ alert("String has two or more extra charaters"); return;}                
+            for(front = 0; front<rear;){
+                if (S[front] == S[rear]) {front++; rear--;}
+                else{                                
+                    update = "";
+                    if(front == (rear-1) && culprit.length == 0){alert("Extra charater is: "+S[front]); return; }
+                    if((S[front] == S[rear-1])){culprit += S[rear]; update += "a"}                
+                    else if((S[front+1] == S[rear])){culprit += S[front]; update += "b" }
+                    else { alert("String has two or more extra charaters"); return;}                
+                    if((culprit.length > 1)){ alert("String has two or more extra charaters"); return;}                
 
-                if(update == "a"){rear-=2; front++;}
-                else if(update == "b"){rear--; front+=2;}                                           
-            
+                    if(update == "a"){rear-=2; front++;}
+                    else if(update == "b"){rear--; front+=2;}                                           
+                
+                }
             }
+            if (culprit.length != 0) {
+                alert("Extra charater is: "+culprit);
+                return;
+            }
+            alert("Palindrome String!");
         }
-        if (culprit.length != 0) {
-            alert("Extra charater is: "+culprit);
-            return;
-        }
-        alert("Palindrome String!");
     }
 
     </script>

@@ -154,7 +154,7 @@
 }
 
 #header-jumbotron{
-    background-color: #488cc4;
+    background-color: #0d5b9b;
     border: solid 1px #0d5b9b;
     color: #FFFFFF;
 }
@@ -167,6 +167,7 @@
 }
 
 #interesting-q .post date{
+    padding-bottom: 5px;
     color: #0d5b9b;
 }
 
