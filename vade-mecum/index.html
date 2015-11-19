@@ -84,7 +84,43 @@
                                 </p>
                                 <input type="text" name="find-palindrome-culprit" id="find-palindrome-culprit" placeholder="Enter the string">                                            
                                 <button type="button" onclick="findPalindromeCulprit();">Give Me Answer!</button>
-                            </div>                                             
+                            </div>
+                            
+                            <div class = "post">
+                                <date class="pull-right">19-Nov-2015</date>
+                                <h4>Given a real-time list of traded stocks, need to get the last N (arbitrary) unique traded stocks. 
+                                Write addTrade(string ticker) and getLastNUnique(int n) functions with efficient runtime?</h4>                                
+                                <p>
+                                    This is an interesting question, I came across.
+                                    Following is my solution where I use something similar to 
+                                    '<a href="http://www.tutorialspoint.com/java/java_linkedhashmap_class.htm" target="_blank">linkedhashmap</a>'. 
+                                    If you find any bug kindly report it to my email.
+                                </p>
+                                <pre>
+map = dict()
+A = ['b','a','d','b','b','b','c','a','b']
+first = '0'
+for a in A:
+    if map.has_key(a):
+        if(map[a][0] != '0'):
+            map[map[a][0]] = [map[map[a][0]][0], map[a][1]]
+            map[a] = ['0', first]   
+            map[first] = [a,map[first][1]]
+            first = a
+    else:           
+        if first != '0' :
+            map[first] = [a, map[first][1]]
+        map[a]= ['0', first]
+        first = a
+        
+def giveLastN(map, n, first):
+    cur = first
+    while(n > 0 and cur != '0'):        
+        print(cur)
+        cur = map[cur][1]
+        n-=1
+                                </pre>
+                            </div>
                         </div>
                     
                     
