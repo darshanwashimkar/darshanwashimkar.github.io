@@ -18,6 +18,13 @@
     <link href="css/vade-mecum.css" rel="stylesheet">
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Code coloring CSS -->
+    <link rel="stylesheet" href="../css/highlight/styles/monokai_sublime.css">
+    
+    <!-- Code coloring script -->
+    <script src="../css/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -70,7 +77,7 @@
                         <!-- Interesting Questions -->
                         <div id="interesting-q">
                             <h3>Interesting Questions</h3>
-                            <div class = "post">
+                            <div class = "post" id="Q1">
                                 <date class="pull-right">25-Feb-2015</date>
                                 <h4>Find what makes string not a palindrome?</h4>                                
                                 <p>
@@ -86,7 +93,7 @@
                                 <button type="button" onclick="findPalindromeCulprit();">Give Me Answer!</button>
                             </div>
                             
-                            <div class = "post">
+                            <div class = "post" id="Q2">
                                 <date class="pull-right">19-Nov-2015</date>
                                 <h4>Given a real-time list of traded stocks, need to get the last N (arbitrary) unique traded stocks. 
                                 Write addTrade(string ticker) and getLastNUnique(int n) functions with efficient runtime?</h4>                                
@@ -96,30 +103,38 @@
                                     '<a href="http://www.tutorialspoint.com/java/java_linkedhashmap_class.htm" target="_blank">linkedhashmap</a>'. 
                                     If you find any bug kindly report it to my email.
                                 </p>
-                                <pre>
-map = dict()
-A = ['b','a','d','b','b','b','c','a','b']
-first = '0'
-for a in A:
-    if map.has_key(a):
-        if(map[a][0] != '0'):
-            map[map[a][0]] = [map[map[a][0]][0], map[a][1]]
-            map[a] = ['0', first]   
-            map[first] = [a,map[first][1]]
-            first = a
-    else:           
-        if first != '0' :
-            map[first] = [a, map[first][1]]
-        map[a]= ['0', first]
-        first = a
+                                <pre><code>
+class TradeTracker(object):
+    def __init__(self):
+        self.map = dict()
+        self.first = '0'
+
+    def addTrade(self, A):
+        for a in A:
+            if  self.map.has_key(a):
+                if(self.map[a][0] != '0'):
+                    self.map[self.map[a][0]] = [self.map[self.map[a][0]][0], self.map[a][1]]
+                    self.map[a] = ['0', self.first]   
+                    self.map[self.first] = [a,self.map[self.first][1]]
+                    self.first = a
+            else:
+                if self.first != '0' :
+                    self.map[self.first] = [a, self.map[self.first][1]]
+                self.map[a]= ['0', self.first]
+                self.first = a
         
-def giveLastN(map, n, first):
-    cur = first
-    while(n > 0 and cur != '0'):        
-        print(cur)
-        cur = map[cur][1]
-        n-=1
-                                </pre>
+    def giveLastN(self, n):
+        cur = self.first
+        while(n > 0 and cur != '0'):        
+            print(cur)
+            cur = self.map[cur][1]
+            n-=1
+            
+A = ['b','a','d','b','b','b','c','a','b','a','a','k']
+T = TradeTracker();
+T.addTrade(A)
+T.giveLastN(4)
+                                </code></pre>
                             </div>
                         </div>
                     
