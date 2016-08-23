@@ -15,6 +15,6 @@ var jqxhr = $.getJSON( "http://darshanwashimkar.github.io/test/BioBots/bioprint-
 // Perform other work here ...
  
 // Set another completion function for the request above
-jqxhr.complete(function() {
+jqxhr.done(function() {
   console.log( "second complete" );
 });
