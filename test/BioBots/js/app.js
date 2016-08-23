@@ -1,4 +1,4 @@
-var jqxhr = $.getJSON( "BioBots/bioprint-data.json", function() {
+var jqxhr = $.getJSON( "http://darshanwashimkar.github.io/test/BioBots/bioprint-data.json", function() {
   console.log( "success" );
 })
   .done(function() {
