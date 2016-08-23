@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
+    alert("Hello! I am an alert box!!");
 });
 
 var jqxhr = $.getJSON( "../bioprint-data.json", function() {
