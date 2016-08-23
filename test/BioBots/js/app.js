@@ -1,14 +1,11 @@
-$( document ).ready(function() {
-    alert("Hello! I am an alert box!!");
-});
-
-var jqxhr = $.getJSON( "../bioprint-data.json", function() {
+var jqxhr = $.getJSON( "./../bioprint-data.json", function() {
   console.log( "success" );
 })
   .done(function() {
     console.log( "second success" );
   })
   .fail(function() {
+    alert("Hello! I am an alert box!!");
     console.log( "error" );
   })
   .always(function() {
