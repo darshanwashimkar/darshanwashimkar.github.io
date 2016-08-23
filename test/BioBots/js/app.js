@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
+
 var jqxhr = $.getJSON( "../bioprint-data.json", function() {
   console.log( "success" );
 })
