@@ -2,3 +2,8 @@
 	width: 240px;
 	margin: 23px auto;
 }
+
+#data_presenter thead th{
+	text-align: center;
+	vertical-align: middle !important;
+}
