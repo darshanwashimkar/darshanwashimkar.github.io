@@ -274,7 +274,18 @@ jsonData.done(function(data) {
   });
 
 });
-
+$('#readMeContent').toggle();
+$("#readMe").click(function(){
+    $("#tool").toggle(0,0,function(){
+      if($("#readMe").text() == "ReadMe"){
+        $("#readMe").text('Tool');
+      }
+      else{
+        $("#readMe").text('ReadMe'); 
+      }
+    });    
+    $('#readMeContent').toggle();    
+});
 //load sample data into the table
 
 

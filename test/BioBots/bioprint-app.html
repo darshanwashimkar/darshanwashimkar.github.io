@@ -18,8 +18,11 @@
       <div class="col-md-4">
         <img src="https://www.biobots.io/wp-content/themes/biobots/images/logo.png" alt="BioBots" class="img-responsive logo">
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <h1>Customer usage of BioBot-1</h1>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-warning" name="readMe" id="readMe">ReadMe</button>
       </div>
     </div>    
   </div>
@@ -61,56 +64,85 @@
   </table> 
   </div>
   -->
-  <div class="container-fluid search_bar">
-    <div class="col-md-3">  
-      <label for="noOfRows" class="control-label">Rows per page: </label>
-      <select class="form-control" id="noOfRows" name="noOfRows">
-        <option>10</option>
-        <option>20</option>
-        <option>50</option>
-        <option>75</option>
-        <option>100</option>
-      </select>
+  <div id="tool">
+    <div class="container-fluid search_bar">
+      <div class="col-md-3">  
+        <label for="noOfRows" class="control-label">Rows per page: </label>
+        <select class="form-control" id="noOfRows" name="noOfRows">
+          <option>10</option>
+          <option>20</option>
+          <option>50</option>
+          <option>75</option>
+          <option>100</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" placeholder="Search model #" id="seachModel">
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" placeholder="Search user email" id="seachEmail">
+      </div>
+      <div class="col-md-5"></div>
     </div>
-    <div class="col-md-2">
-      <input class="form-control" placeholder="Search model #" id="seachModel">
-    </div>
-    <div class="col-md-2">
-      <input class="form-control" placeholder="Search user email" id="seachEmail">
-    </div>
-    <div class="col-md-5"></div>
-  </div>
 
-  <div class="container-fluid search_bar">
-    <div class="col-md-3">
-      <label for="seachAliveMin" class="control-label">Seach prints with % alive cells:</label>
+    <div class="container-fluid search_bar">
+      <div class="col-md-3">
+        <label for="seachAliveMin" class="control-label">Seach prints with % alive cells:</label>
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" placeholder="Minimum %" id="seachAliveMin">
+      </div>        
+      <div class="col-md-2">       
+        <input class="form-control" placeholder="Maximum %" id="seachAliveMax">
+      </div>
+      <div class="col-md-5"></div>    
     </div>
-    <div class="col-md-2">
-      <input class="form-control" placeholder="Minimum %" id="seachAliveMin">
-    </div>        
-    <div class="col-md-2">       
-      <input class="form-control" placeholder="Maximum %" id="seachAliveMax">
+    <div class="container-fluid search_bar">
+      <div class="col-md-3">
+        <label for="seachDeadMin" class="control-label">Seach prints with % dead cells:</label>
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" placeholder="Minimum %" id="seachDeadMin">
+      </div>        
+      <div class="col-md-2">       
+        <input class="form-control" placeholder="Maximum %" id="seachDeadMax">
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-info" name="allFilters" id="allFilters">Apply All Filters</button>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-info" name="clearAll" id="clearAll">Clear</button>
+      </div>    
     </div>
-    <div class="col-md-5"></div>    
+    <div id="example-table"></div>
   </div>
-  <div class="container-fluid search_bar">
-    <div class="col-md-3">
-      <label for="seachDeadMin" class="control-label">Seach prints with % dead cells:</label>
-    </div>
-    <div class="col-md-2">
-      <input class="form-control" placeholder="Minimum %" id="seachDeadMin">
-    </div>        
-    <div class="col-md-2">       
-      <input class="form-control" placeholder="Maximum %" id="seachDeadMax">
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-info" name="allFilters" id="allFilters">Apply All Filters</button>
-    </div>
-    <div class="col-md-3">
-      <button type="button" class="btn btn-info" name="clearAll" id="clearAll">Clear</button>
-    </div>    
+  <div id="readMeContent">
+    <h3>ReadMe</h3>
+    <ul>
+      <li>Assumptions</li>
+        <ul>
+          <li>According to my understanding of this assignment, I had to write a tool to assist analyzing BioBot 1 prints.</li>
+          <li>Because I already got the JSON file, I assumed that I had to write the client-side tool. I might write it differently if I have control over server-side.</li>
+          <li>The information such as "cl_duration" and "cl_intensity" might be too technical/unimportant for the user of this tool. So neglected that.</li>
+        </ul>        
+      <li>Libraries Used</li>
+        <ul>
+          <li>Jquery : https://jquery.com/</li>
+          <li>Bootstrap : http://getbootstrap.com/</li>
+          <li>Tabulator : http://olifolkerd.github.io/tabulator/</li>
+          <li>I also used http://stackoverflow.com/ for the help</li>
+        </ul>
+      <li>Usage</li>
+        <ul>
+          <li>Tool basically loads the JSON file from : http://darshanwashimkar.github.io/test/BioBots/bioprint-data.json</li>
+          <li>Hovering over the cell shows its value. It also applies for the headers of table.</li>
+          <li>You can search the information with Model number of BioBot-1, Email address of the user.</li>
+          <li>You can also search the data by giving minimum and maximum value for alive and dead cells.</li>
+          <li>To apply all the filter at a time use "Apply All Filters" button.</li>
+        </ul>      
+      <li>Written by Darshan Washimkar: darshan.wash@gmail.com, <a href="http://darshanwashimkar.github.io/">http://darshanwashimkar.github.io/</a></li>
+    </ul>
   </div>
-  <div id="example-table"></div>
 </div> 
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="./js/bootstrap.min.js" integrity="
