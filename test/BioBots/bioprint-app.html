@@ -7,7 +7,7 @@
 
   <title>Biobots coding challenge </title> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="./css/tabulator.css" rel="stylesheet">
+  <link href="./css/tabulator_simple.css" rel="stylesheet">  
   <link rel="stylesheet" href="./css/main.css" type="text/css">
 </head>
 <body>
@@ -61,6 +61,50 @@
   </table> 
   </div>
   -->
+  <div class="container-fluid search_bar">
+    <div class="col-md-3">  
+      <label for="noOfRows" class="control-label">Rows per page: </label>
+      <select class="form-control" id="noOfRows" name="noOfRows">
+        <option>10</option>
+        <option>20</option>
+        <option>50</option>
+        <option>75</option>
+        <option>100</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" placeholder="Search model #" id="seachModel">
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" placeholder="Search user email" id="seachEmail">
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+
+  <div class="container-fluid search_bar">
+    <div class="col-md-3">
+      <label for="seachAliveMin" class="control-label">Seach prints with % alive cells:</label>
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" placeholder="Minimum %" id="seachAliveMin">
+    </div>        
+    <div class="col-md-2">       
+      <input class="form-control" placeholder="Maximum %" id="seachAliveMax">
+    </div>
+    <div class="col-md-5"></div>    
+  </div>
+  <div class="container-fluid search_bar">
+    <div class="col-md-3">
+      <label for="seachDeadMin" class="control-label">Seach prints with % dead cells:</label>
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" placeholder="Minimum %" id="seachDeadMin">
+    </div>        
+    <div class="col-md-2">       
+      <input class="form-control" placeholder="Maximum %" id="seachDeadMax">
+    </div>
+    <div class="col-md-5"></div>    
+  </div>
   <div id="example-table"></div>
 </div> 
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>

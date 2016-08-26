@@ -10,19 +10,6 @@ var jsonData = $.getJSON( "http://darshanwashimkar.github.io/test/BioBots/biopri
     console.log( "error" );
   });
 
-
-
-
-//define some sample data
-var tabledata = [
-    {id:1, model:"1", email:"user0@gmail.com", input:"red", output:"dasd", crosslinking: "false", layer:"32", height:"0.8", wellplate:"42", live:"83.98", dead:"21.41", elasticity:"49.53"},
-    {id:1, model:"1", email:"user0@gmail.com", input:"red", output:"dasd", crosslinking: "false", layer:"32", height:"0.8", wellplate:"42", live:"83.98", dead:"21.41", elasticity:"49.53"},
-    {id:1, model:"1", email:"user0@gmail.com", input:"red", output:"dasd", crosslinking: "false", layer:"32", height:"0.8", wellplate:"42", live:"83.98", dead:"21.41", elasticity:"49.53"},
-    {id:1, model:"1", email:"user0@gmail.com", input:"red", output:"dasd", crosslinking: "false", layer:"32", height:"0.8", wellplate:"42", live:"83.98", dead:"21.41", elasticity:"49.53"},
-    {id:1, model:"1", email:"user0@gmail.com", input:"red", output:"dasd", crosslinking: "false", layer:"32", height:"0.8", wellplate:"42", live:"83.98", dead:"21.41", elasticity:"49.53"},
-];
-
-
 jsonData.done(function(data) {
   tabledata  = []
   $.each(data, function(i,eachPrint){
@@ -43,17 +30,17 @@ jsonData.done(function(data) {
       tabledata.push(ele);
    });
 
-  $("#example-table").tabulator({
-      height:"320px", // set height of table (optional)
+  $("#example-table").tabulator({      
       fitColumns:true, //fit columns to width of table (optional)
       tooltips:true,
       tooltipsHeader:true,
+      progressiveRenderSize:50,      
       columns:[ //Define Table COlumns
-          {title:"Model #", field:"model", sorter:"number", sortable:false, width:"62"},
+          {title:"Model #", field:"model", sorter:"number", sortable:false, width:"65"},
           {title:"User", field:"email", sorter:"string", sortable:true, formatter:"email"},
           {title:"Input", field:"input", sorter:"string", sortable:false},
           {title:"Output", field:"output", sorter:"string", sortable:false},
-          {title:"Crosslinking", field:"crosslinking", sorter:"boolean", sortable:true, formatter:"tickCross"},
+          {title:"Crosslinking Used", field:"crosslinking", sorter:"boolean", sortable:true, formatter:"tickCross"},
           {title:"NoOfLayers", field:"layer", sorter:"number", sortable:true},
           {title:"LayerHeight", field:"height", sorter:"number", sortable:true},
           {title:"Wellplate", field:"wellplate", sorter:"number", sortable:true},
@@ -61,12 +48,131 @@ jsonData.done(function(data) {
           {title:"DeadCells", field:"dead", sorter:"number", sortable:true, formatter:"progress", formatterParams:{color:"#dd1400"}},
           {title:"Elasticity", field:"elasticity", sorter:"number", sortable:true},
       ],
-      rowClick:function(e, id, data, row){ //trigger an alert message when the row is clicked
-          alert("Row " + id + " Clicked!!!!");
-      }, pagination:true,
+      pagination:true,
+  });
+
+  $("#example-table").tabulator("setData", tabledata);
+
+
+  $('#noOfRows').change(function(){        
+    $("#example-table").tabulator("setPageSize", Number(this.value));
+  });
+
+  function searchAlive(rowData){
+    var min = 0;
+    var max = 100;
+    if($('#seachAliveMin').val().length > 0){
+      min = $('#seachAliveMin').val();
+    }
+    if($('#seachAliveMax').val().length > 0){
+      max = $('#seachAliveMax').val();
+    }    
+    return  min <= rowData.live && max >= rowData.live;
+  }
+
+  function searchDead(rowData){
+    var min = 0;
+    var max = 100;
+    if($('#seachDeadMin').val().length > 0){
+      min = $('#seachDeadMin').val();
+    }
+    if($('#seachDeadMax').val().length > 0){
+      max = $('#seachDeadMax').val();
+    }    
+    return  min <= rowData.dead && max >= rowData.dead;
+  }
+  // Searching using model #
+  $('#seachModel').on('propertychange input', function (e) {
+    var valueChanged = false;
+
+    if (e.type=='propertychange') {
+        valueChanged = e.originalEvent.propertyName=='value';
+    } else {
+        valueChanged = true;
+    }
+    if (valueChanged) {    
+        if(this.value.length <= 0){          
+          $("#example-table").tabulator("setFilter");
+        }
+        else{
+          $("#example-table").tabulator("setFilter", "model", "=", this.value);
+        }
+    }
+  });
+
+  // Searching using email.
+  $('#seachEmail').on('propertychange input', function (e) {
+    var valueChanged = false;
+
+    if (e.type=='propertychange') {
+        valueChanged = e.originalEvent.propertyName=='value';
+    } else {
+        valueChanged = true;
+    }
+    if (valueChanged){
+      if(this.value.length <= 0){          
+        $("#example-table").tabulator("setFilter");
+      }
+      else{
+        $("#example-table").tabulator("setFilter", "email", "like", this.value);
+      }
+    }
+  });
+
+  // Searching alive cell Min
+  $('#seachAliveMin').on('propertychange input', function (e) {
+    var valueChanged = false;
+
+    if (e.type=='propertychange') {
+        valueChanged = e.originalEvent.propertyName=='value';
+    } else {
+        valueChanged = true;
+    }
+    if (valueChanged){
+      $("#example-table").tabulator("setFilter", searchAlive);
+    }
   });
   
-  $("#example-table").tabulator("setData", tabledata);  
+  $('#seachAliveMax').on('propertychange input', function (e) {
+    var valueChanged = false;
+
+    if (e.type=='propertychange') {
+        valueChanged = e.originalEvent.propertyName=='value';
+    } else {
+        valueChanged = true;
+    }
+    if (valueChanged){
+      $("#example-table").tabulator("setFilter", searchAlive);
+    }
+  });
+
+  // Searching alive cell Min Max
+  $('#seachDeadMin').on('propertychange input', function (e) {
+    var valueChanged = false;
+
+    if (e.type=='propertychange') {
+        valueChanged = e.originalEvent.propertyName=='value';
+    } else {
+        valueChanged = true;
+    }
+    if (valueChanged){
+      $("#example-table").tabulator("setFilter", searchDead);
+    }
+  });
+  
+  $('#seachDeadMax').on('propertychange input', function (e) {
+    var valueChanged = false;
+
+    if (e.type=='propertychange') {
+        valueChanged = e.originalEvent.propertyName=='value';
+    } else {
+        valueChanged = true;
+    }
+    if (valueChanged){
+      $("#example-table").tabulator("setFilter", searchDead);
+    }
+  });
+
 });
 
 //load sample data into the table
