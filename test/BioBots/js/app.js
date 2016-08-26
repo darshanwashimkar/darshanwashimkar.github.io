@@ -81,8 +81,42 @@ jsonData.done(function(data) {
     }    
     return  min <= rowData.dead && max >= rowData.dead;
   }
+
+  function searchAll(rowData){
+    var minAlive = 0;
+    var maxAlive = 100;
+    var minDead = 0;
+    var maxDead = 100;
+    var ignoreEmail = false;
+    var ignoreModel = false;
+    if($('#seachAliveMin').val().length > 0){
+      minAlive = $('#seachAliveMin').val();
+    }
+    if($('#seachAliveMax').val().length > 0){
+      maxAlive = $('#seachAliveMax').val();
+    }
+
+    if($('#seachDeadMin').val().length > 0){
+      minDead = $('#seachDeadMin').val();
+    }
+    if($('#seachDeadMax').val().length > 0){
+      maxDead = $('#seachDeadMax').val();
+    }
+    if($('#seachEmail').val().length <= 0){
+      ignoreEmail = true;
+    }
+    if($('#seachModel').val().length <= 0){
+      ignoreEmail = true;
+    }
+    
+    return  minAlive <= rowData.live && maxAlive >= rowData.live && 
+            minDead <= rowData.dead && maxDead >= rowData.dead &&
+            (ignoreModel ||  rowData.model == $('#seachModel').val()) &&
+            (ignoreEmail ||  rowData.email.indexOf($('#seachEmail').val()) > -1);
+  }
+
   // Searching using model #
-  $('#seachModel').on('propertychange input', function (e) {
+ /* $('#seachModel').on('propertychange input', function (e) {
     var valueChanged = false;
 
     if (e.type=='propertychange') {
@@ -171,6 +205,72 @@ jsonData.done(function(data) {
     if (valueChanged){
       $("#example-table").tabulator("setFilter", searchDead);
     }
+  });*/
+
+  var typingTimer;
+  var doneTypingInterval = 400;
+  $('#seachModel').keyup(function(){
+    clearTimeout(typingTimer);    
+    typingTimer = setTimeout(function(){
+      if($('#seachModel').val().length <= 0){          
+        $("#example-table").tabulator("setFilter");
+      }
+      else{
+        $("#example-table").tabulator("setFilter", "model", "=", $('#seachModel').val());
+      }
+    }, doneTypingInterval);
+  });
+
+  $('#seachEmail').keyup(function(){
+    clearTimeout(typingTimer);    
+    typingTimer = setTimeout(function(){
+      if($('#seachEmail').val().length <= 0){          
+        $("#example-table").tabulator("setFilter");
+      }
+      else{
+        $("#example-table").tabulator("setFilter", "email", "like", $('#seachEmail').val());
+      }
+    }, doneTypingInterval);
+  });
+
+  $('#seachAliveMin').keyup(function(){
+    clearTimeout(typingTimer);    
+    typingTimer = setTimeout(function(){
+      $("#example-table").tabulator("setFilter", searchAlive);
+    }, doneTypingInterval);
+  });
+  $('#seachAliveMax').keyup(function(){
+    clearTimeout(typingTimer);    
+    typingTimer = setTimeout(function(){
+      $("#example-table").tabulator("setFilter", searchAlive);
+    }, doneTypingInterval);
+  });
+
+  $('#seachDeadMin').keyup(function(){
+    clearTimeout(typingTimer);    
+    typingTimer = setTimeout(function(){
+      $("#example-table").tabulator("setFilter", searchDead);
+    }, doneTypingInterval);
+  });
+  $('#seachDeadMax').keyup(function(){
+    clearTimeout(typingTimer);    
+    typingTimer = setTimeout(function(){
+      $("#example-table").tabulator("setFilter", searchDead);
+    }, doneTypingInterval);
+  });  
+
+  $("#allFilters").click(function(){
+      $("#example-table").tabulator("setFilter", searchAll);
+  });
+
+  $("#clearAll").click(function(){
+      $("#seachModel").val('');
+      $("#seachEmail").val('');
+      $("#seachAliveMin").val('');
+      $("#seachAliveMax").val('');
+      $("#seachDeadMin").val('');
+      $("#seachDeadMax").val('');
+      $("#example-table").tabulator("setFilter");
   });
 
 });
