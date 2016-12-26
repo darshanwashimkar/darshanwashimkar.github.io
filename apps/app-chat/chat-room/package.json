@@ -1,0 +1,7 @@
+{
+    "name" : "socket-chat-example",
+    "version" : "1.0",
+    "description" : "my app",
+    "dependencies" : {},
+    "references" : "http://socket.io/get-started/chat/"
+}
